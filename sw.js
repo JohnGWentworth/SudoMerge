@@ -1,13 +1,12 @@
-const CACHE_NAME = 'sudomerge-v1';
+const CACHE_NAME = 'sudomerge-v2'; // Changed to v2 to force an update
 const ASSETS_TO_CACHE = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png'
+  './',
+  './index.html',
+  './manifest.json',
+  './icon-192.png',
+  './icon-512.png'
 ];
 
-// Install event - cache the assets
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -15,7 +14,6 @@ self.addEventListener('install', event => {
   );
 });
 
-// Fetch event - serve from cache when offline
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
