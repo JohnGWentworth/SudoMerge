@@ -2,7 +2,7 @@
   "name": "SudoMerge",
   "short_name": "SudoMerge",
   "description": "A logic-based merge puzzle game.",
-  "start_url": "/",
+  "start_url": "./",
   "display": "fullscreen",
   "background_color": "#0f172a",
   "theme_color": "#0f172a",
