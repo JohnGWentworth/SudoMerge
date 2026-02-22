@@ -322,7 +322,8 @@
 
         function syncGlobalBest() {
             if (!user) return;
-            const bestDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'global_best');
+            // FIXED: Added 'leaderboards' collection to make it an even 6 segments
+            const bestDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'leaderboards', 'global_best');
             onSnapshot(bestDocRef, (snap) => {
                 if (snap.exists()) {
                     globalBest = snap.data();
@@ -335,7 +336,8 @@
         async function updateLeaderboard() {
             if (!user) return;
             if (score > globalBest.score || (score === globalBest.score && moves < globalBest.moves)) {
-                const bestDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'global_best');
+                // FIXED: Added 'leaderboards' collection here as well
+                const bestDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'leaderboards', 'global_best');
                 await setDoc(bestDocRef, {
                     score: score,
                     moves: moves,
