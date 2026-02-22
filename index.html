@@ -5,7 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SudoMerge: Competitive Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
+  <!-- Link the manifest -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0f172a">
+
+<!-- Register the service worker -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js')
+        .then(reg => console.log('Service Worker registered!', reg))
+        .catch(err => console.error('Service Worker failed.', err));
+    });
+  }
+</script>
+	
+	<style>
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
 
         :root {
@@ -624,4 +639,5 @@
         initAuth().then(() => init());
     </script>
 </body>
+
 </html>
