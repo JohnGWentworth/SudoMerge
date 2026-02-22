@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SudoMerge: Competitive Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Link the manifest -->
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0f172a">
+    
+    <!-- Link the manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0f172a">
 
-<!-- Register the service worker -->
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('sw.js')
-        .then(reg => console.log('Service Worker registered!', reg))
-        .catch(err => console.error('Service Worker failed.', err));
-    });
-  }
-</script>
-	
-	<style>
+    <!-- Register the service worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js')
+            .then(reg => console.log('Service Worker registered!', reg))
+            .catch(err => console.error('Service Worker failed.', err));
+        });
+      }
+    </script>
+    
+    <style>
         @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
 
         :root {
@@ -258,24 +259,23 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-       // Firebase Config
-	const firebaseConfig = {
-	const firebaseConfig = {
-  apiKey: "AIzaSyDFJsc6HpYliV_yCINcHtX7cNm624iRJbU",
-  authDomain: "sudomerge-app.firebaseapp.com",
-  projectId: "sudomerge-app",
-  storageBucket: "sudomerge-app.firebasestorage.app",
-  messagingSenderId: "329528198391",
-  appId: "1:329528198391:web:ef0bca2319f3c3407ebff2"
-};	
-	};
-	const app = initializeApp(firebaseConfig);
-	const auth = getAuth(app);
-	const db = getFirestore(app);
-	const appId = 'sudomerge-pro'; // You can keep this as-is
+        // Firebase Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyDFJsc6HpYliV_yCINcHtX7cNm624iRJbU",
+            authDomain: "sudomerge-app.firebaseapp.com",
+            projectId: "sudomerge-app",
+            storageBucket: "sudomerge-app.firebasestorage.app",
+            messagingSenderId: "329528198391",
+            appId: "1:329528198391:web:ef0bca2319f3c3407ebff2"
+        };
+        
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const appId = 'sudomerge-pro';
 
         let user = null;
         let globalBest = { score: 0, moves: Infinity };
@@ -308,13 +308,12 @@
 
         // AUTH & SYNC
         async function initAuth() {
-    try {
-        await signInAnonymously(auth);
-    } catch (error) {
-        console.error("Auth Error:", error);
-    }
-}
-
+            try {
+                await signInAnonymously(auth);
+            } catch (error) {
+                console.error("Auth Error:", error);
+            }
+        }
 
         onAuthStateChanged(auth, (u) => {
             user = u;
@@ -639,5 +638,4 @@
         initAuth().then(() => init());
     </script>
 </body>
-
 </html>
